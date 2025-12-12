@@ -59,7 +59,7 @@ export default {
         },
       },
       fontFamily: {
-        display: ['JetBrains Mono', 'monospace'],
+        display: ['Poppins', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
       },
       borderRadius: {
