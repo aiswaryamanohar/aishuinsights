@@ -27,8 +27,8 @@ const Hero = () => {
           
           {/* Name */}
           <h1 className="animate-slide-up font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
-            <span className="text-foreground">Aishu</span>
-            <span className="text-gradient"> Mano</span>
+            <span className="text-foreground">Aiswarya</span>
+            <span className="text-gradient"> Manoharan</span>
           </h1>
           
           {/* Title */}
