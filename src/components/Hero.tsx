@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, MapPin, ChevronDown } from "lucide-react";
+import { Mail, Linkedin, MapPin, ChevronDown, Download } from "lucide-react";
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -53,6 +53,12 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="animate-slide-up delay-400 flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <Button variant="hero" size="lg" asChild>
+              <a href="/Aiswarya_Manoharan_Resume.pdf" download>
+                <Download className="w-5 h-5" />
+                Download Resume
+              </a>
+            </Button>
+            <Button variant="heroOutline" size="lg" asChild>
               <a href="mailto:aysswarya137@gmail.com">
                 <Mail className="w-5 h-5" />
                 Get in Touch
