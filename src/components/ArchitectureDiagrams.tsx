@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { Database, BarChart3, Building2 } from "lucide-react";
-import { SectionHeader } from "@/components/ui/section-header";
-import { AnimatedCard, motion } from "@/components/ui/motion";
 
 const diagrams = [
   {
@@ -368,19 +366,19 @@ const ArchitectureDiagrams = () => {
     <section id="architecture" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <SectionHeader 
-            title="Technical Architecture" 
-            subtitle="Visual representation of key data architectures I've designed and implemented"
-          />
+          {/* Section header */}
+          <div className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+              <span className="text-gradient">Technical Architecture</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Visual representation of key data architectures and frameworks I've designed and implemented
+            </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-transparent mx-auto rounded-full mt-4" />
+          </div>
 
           {/* Diagram selector tabs */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-wrap justify-center gap-3 mb-8"
-          >
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
             {diagrams.map((diagram) => (
               <button
                 key={diagram.id}
@@ -396,7 +394,7 @@ const ArchitectureDiagrams = () => {
                 <span className="sm:hidden">{diagram.title.split(" ")[0]}</span>
               </button>
             ))}
-          </motion.div>
+          </div>
 
           {/* Active diagram info */}
           <div className="text-center mb-6">
@@ -406,9 +404,9 @@ const ArchitectureDiagrams = () => {
           </div>
 
           {/* Diagram container */}
-          <AnimatedCard className="bg-gradient-card rounded-2xl p-6 md:p-8 card-shadow border border-border">
+          <div className="bg-gradient-card rounded-2xl p-6 md:p-8 card-shadow border border-border">
             {renderDiagram()}
-          </AnimatedCard>
+          </div>
         </div>
       </div>
     </section>
