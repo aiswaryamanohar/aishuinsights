@@ -25,12 +25,12 @@ const skillCategories = [
   {
     title: "Data Governance",
     icon: Shield,
-    skills: ["MDM", "Metadata Management", "Data Quality", "Lineage Tracking", "Compliance"]
+    skills: ["MDM - Metadata Management", "Data Quality", "Lineage Tracking", "Compliance"]
   },
   {
-    title: "Architecture",
+    title: "Data Modelling & Architecture",
     icon: Workflow,
-    skills: ["Star Schema", "Snowflake Schema", "Lakehouse", "CI/CD", "Data Modeling"]
+    skills: ["Star Schema", "Snowflake Schema", "Lakehouse", "CI/CD", "AAS"]
   }
 ];
 
