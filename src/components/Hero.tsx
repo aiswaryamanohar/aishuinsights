@@ -37,11 +37,17 @@ const Hero = () => {
           </p>
           
           {/* Subtitle */}
-          <p className="animate-slide-up delay-200 text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-6 font-body leading-relaxed">
-            8+ years building enterprise-scale data platforms across 
+          <p className="animate-slide-up delay-200 text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto mb-6 font-body leading-relaxed">
+            Specializing in enterprise data platforms, governance, and analytics strategy across global enterprises. 10 years of experience in
             <span className="text-foreground"> Azure</span>, 
-            <span className="text-foreground"> Databricks</span> & 
-            <span className="text-foreground"> Modern Lakehouse</span> architectures
+            <span className="text-foreground"> Databricks</span>, 
+            <span className="text-foreground"> Lakehouse Architecture</span> &
+            <span className="text-foreground"> Data Governance</span>.
+          </p>
+          
+          {/* Industry tags */}
+          <p className="animate-slide-up delay-250 text-sm text-muted-foreground mb-4">
+            <span className="font-medium text-foreground/80">Industries:</span> FMCG • Banking • Oil & Gas • EPC
           </p>
           
           {/* Location */}
