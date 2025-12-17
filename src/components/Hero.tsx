@@ -1,5 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, MapPin, ChevronDown, Download } from "lucide-react";
+import AnimatedCounter from "./AnimatedCounter";
+
+const stats = [
+  { value: 10, suffix: "+", label: "Years Experience" },
+  { value: 5, suffix: "+", label: "Industries" },
+  { value: 15, suffix: "+", label: "Enterprise Projects" },
+];
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -19,7 +26,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Status badge */}
           <div className="animate-fade-in mb-8">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-mono">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-mono shimmer">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               Open to opportunities
             </span>
@@ -39,10 +46,10 @@ const Hero = () => {
           {/* Subtitle */}
           <p className="animate-slide-up delay-200 text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto mb-6 font-body leading-relaxed">
             Specializing in enterprise data platforms, governance, and analytics strategy across global enterprises. 10 years of experience in
-            <span className="text-foreground"> Azure</span>, 
-            <span className="text-foreground"> Databricks</span>, 
-            <span className="text-foreground"> Lakehouse Architecture</span> &
-            <span className="text-foreground"> Data Governance</span>.
+            <span className="text-foreground font-medium"> Azure</span>, 
+            <span className="text-foreground font-medium"> Databricks</span>, 
+            <span className="text-foreground font-medium"> Lakehouse Architecture</span> &
+            <span className="text-foreground font-medium"> Data Governance</span>.
           </p>
           
           {/* Industry tags */}
@@ -56,11 +63,23 @@ const Hero = () => {
             <span>Dubai, UAE</span>
           </div>
           
+          {/* Stats */}
+          <div className="animate-slide-up delay-350 flex justify-center gap-8 md:gap-12 mb-10">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="font-display text-3xl md:text-4xl font-bold text-primary">
+                  <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                </div>
+                <p className="text-xs md:text-sm text-muted-foreground mt-1">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+          
           {/* CTA Buttons */}
           <div className="animate-slide-up delay-400 flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Button variant="hero" size="lg" asChild>
+            <Button variant="hero" size="lg" className="group" asChild>
               <a href="/Aiswarya_Manoharan_Resume.pdf" download>
-                <Download className="w-5 h-5" />
+                <Download className="w-5 h-5 group-hover:animate-bounce" />
                 Download Resume
               </a>
             </Button>
