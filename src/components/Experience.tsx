@@ -1,4 +1,5 @@
 import { Briefcase, MapPin, Calendar, Building2, Users } from "lucide-react";
+import useScrollReveal from "@/hooks/useScrollReveal";
 
 const experiences = [
   {
@@ -76,6 +77,9 @@ const experiences = [
 ];
 
 const Experience = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
+  const { ref: timelineRef, isVisible: timelineVisible } = useScrollReveal();
+
   return (
     <section id="experience" className="py-24 bg-card relative">
       <div className="absolute inset-0 grid-pattern opacity-10" />
@@ -83,7 +87,10 @@ const Experience = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-16">
+          <div 
+            ref={headerRef}
+            className={`text-center mb-16 reveal ${headerVisible ? 'visible' : ''}`}
+          >
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
               <span className="text-gradient">Professional Experience</span>
             </h2>
@@ -94,20 +101,20 @@ const Experience = () => {
           </div>
           
           {/* Timeline */}
-          <div className="relative">
+          <div ref={timelineRef} className="relative">
             {/* Timeline line */}
             <div className="absolute left-0 md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-transparent" />
             
             {experiences.map((exp, index) => (
               <div 
                 key={index}
-                className="relative mb-10 last:mb-0 pl-8 md:pl-20"
+                className={`relative mb-10 last:mb-0 pl-8 md:pl-20 reveal stagger-${Math.min(index + 1, 5)} ${timelineVisible ? 'visible' : ''}`}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-0 md:left-8 top-0 w-4 h-4 rounded-full bg-primary glow -translate-x-1/2" />
+                <div className="absolute left-0 md:left-8 top-0 w-4 h-4 rounded-full bg-primary glow -translate-x-1/2 transition-transform hover:scale-125" />
                 
                 {/* Content card */}
-                <div className="bg-gradient-card rounded-xl p-6 card-shadow border border-border hover:border-primary/30 transition-all duration-300">
+                <div className="bg-gradient-card rounded-xl p-6 card-shadow border border-border hover:border-primary/30 transition-all duration-300 card-lift gradient-border">
                   {/* Header */}
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-4">
                     <div>

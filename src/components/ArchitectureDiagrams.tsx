@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Database, BarChart3, Building2 } from "lucide-react";
+import useScrollReveal from "@/hooks/useScrollReveal";
 
 const diagrams = [
   {
@@ -362,12 +363,18 @@ const ArchitectureDiagrams = () => {
     }
   };
 
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
+  const { ref: contentRef, isVisible: contentVisible } = useScrollReveal();
+
   return (
     <section id="architecture" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-12">
+          <div 
+            ref={headerRef}
+            className={`text-center mb-12 reveal ${headerVisible ? 'visible' : ''}`}
+          >
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
               <span className="text-gradient">Technical Architecture</span>
             </h2>
@@ -378,12 +385,12 @@ const ArchitectureDiagrams = () => {
           </div>
 
           {/* Diagram selector tabs */}
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
+          <div className={`flex flex-wrap justify-center gap-3 mb-8 reveal stagger-1 ${headerVisible ? 'visible' : ''}`}>
             {diagrams.map((diagram) => (
               <button
                 key={diagram.id}
                 onClick={() => setActiveDiagram(diagram.id)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 hover:scale-105 ${
                   activeDiagram === diagram.id
                     ? "bg-primary text-primary-foreground shadow-md"
                     : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
@@ -397,14 +404,17 @@ const ArchitectureDiagrams = () => {
           </div>
 
           {/* Active diagram info */}
-          <div className="text-center mb-6">
+          <div className={`text-center mb-6 reveal stagger-2 ${headerVisible ? 'visible' : ''}`}>
             <p className="text-sm text-muted-foreground">
               {diagrams.find((d) => d.id === activeDiagram)?.company} • {diagrams.find((d) => d.id === activeDiagram)?.description}
             </p>
           </div>
 
           {/* Diagram container */}
-          <div className="bg-gradient-card rounded-2xl p-6 md:p-8 card-shadow border border-border">
+          <div 
+            ref={contentRef}
+            className={`bg-gradient-card rounded-2xl p-6 md:p-8 card-shadow border border-border gradient-border reveal-scale ${contentVisible ? 'visible' : ''}`}
+          >
             {renderDiagram()}
           </div>
         </div>

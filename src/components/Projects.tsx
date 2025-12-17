@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Layers, BarChart3, PieChart, Database, TrendingUp } from "lucide-react";
+import useScrollReveal from "@/hooks/useScrollReveal";
 
 const projects = [
   {
@@ -41,6 +42,9 @@ const projects = [
 ];
 
 const Projects = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
+  const { ref: gridRef, isVisible: gridVisible } = useScrollReveal();
+
   return (
     <section id="projects" className="py-24 bg-gradient-hero relative">
       <div className="absolute inset-0 grid-pattern opacity-20" />
@@ -48,7 +52,10 @@ const Projects = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-16">
+          <div 
+            ref={headerRef}
+            className={`text-center mb-16 reveal ${headerVisible ? 'visible' : ''}`}
+          >
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
               <span className="text-gradient">Featured Projects</span>
             </h2>
@@ -56,16 +63,16 @@ const Projects = () => {
           </div>
           
           {/* Projects grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <div 
                 key={index}
-                className={`bg-gradient-card rounded-2xl p-6 md:p-8 card-shadow border border-border hover:border-primary/30 hover:card-shadow-hover transition-all duration-300 group ${
+                className={`bg-gradient-card rounded-2xl p-6 md:p-8 card-shadow border border-border hover:border-primary/30 hover:card-shadow-hover transition-all duration-300 group card-lift gradient-border reveal stagger-${Math.min(index + 1, 5)} ${gridVisible ? 'visible' : ''} ${
                   index === 0 ? 'md:col-span-2' : ''
                 }`}
               >
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors shrink-0">
+                  <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300 shrink-0">
                     <project.icon className="w-6 h-6" />
                   </div>
                   <div>
@@ -81,7 +88,7 @@ const Projects = () => {
                 </p>
                 
                 {project.impact && (
-                  <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 mb-4">
+                  <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 mb-4 shimmer">
                     <p className="text-sm">
                       <span className="text-primary font-semibold">Impact:</span>{" "}
                       <span className="text-muted-foreground">{project.impact}</span>
@@ -91,7 +98,7 @@ const Projects = () => {
                 
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
-                    <Badge key={tech} variant="skill">
+                    <Badge key={tech} variant="skill" className="hover:bg-primary/20 transition-colors cursor-default">
                       {tech}
                     </Badge>
                   ))}
