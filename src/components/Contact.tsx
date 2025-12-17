@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, MapPin, GraduationCap, Languages } from "lucide-react";
+import { Mail, Linkedin, MapPin, GraduationCap, Languages, Phone } from "lucide-react";
 import useScrollReveal from "@/hooks/useScrollReveal";
 
 const Contact = () => {
@@ -35,6 +35,19 @@ const Contact = () => {
               <h3 className="font-display text-xl font-bold text-foreground mb-6">Contact Info</h3>
               
               <div className="space-y-4">
+                <a 
+                  href="tel:+971506906899"
+                  className="flex items-center gap-4 p-4 rounded-xl bg-secondary/50 hover:bg-secondary transition-all duration-300 group card-lift"
+                >
+                  <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Phone</p>
+                    <p className="text-foreground font-medium">+971 50 690 6899</p>
+                  </div>
+                </a>
+                
                 <a 
                   href="mailto:aysswarya137@gmail.com"
                   className="flex items-center gap-4 p-4 rounded-xl bg-secondary/50 hover:bg-secondary transition-all duration-300 group card-lift"
