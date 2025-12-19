@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Layers, BarChart3, PieChart, Database, TrendingUp, Truck } from "lucide-react";
+import { Layers, BarChart3, PieChart, Database, TrendingUp, Truck, Users, ShoppingCart } from "lucide-react";
 import useScrollReveal from "@/hooks/useScrollReveal";
 
 const projects = [
@@ -46,6 +46,22 @@ const projects = [
     description: "Developed comprehensive Power BI dashboard solution integrating Oracle ERP data for end-to-end supply chain visibility. Created real-time KPIs for inventory, procurement, logistics, and supplier performance monitoring.",
     impact: "30% improvement in supply chain visibility, 20% reduction in stockouts",
     tech: ["Power BI", "Oracle ERP", "Azure Data Factory", "SQL Server", "DAX"]
+  },
+  {
+    title: "Customer 360 Analytics",
+    company: "Retail Enterprise",
+    icon: Users,
+    description: "Built unified customer data platform consolidating CRM, POS, and web analytics data. Enabled personalized marketing campaigns and customer lifetime value predictions through advanced segmentation.",
+    impact: "25% increase in customer retention, 40% improvement in campaign ROI",
+    tech: ["Azure Synapse", "Power BI", "Python", "Azure ML", "Databricks"]
+  },
+  {
+    title: "Revenue Forecasting Pipeline",
+    company: "Financial Services",
+    icon: ShoppingCart,
+    description: "Designed automated data pipeline for real-time revenue forecasting and variance analysis. Integrated multiple sales channels and provided executives with predictive insights for strategic planning.",
+    impact: "95% forecast accuracy, reduced reporting time from days to hours",
+    tech: ["Azure Data Factory", "Databricks", "Power BI", "Python", "SQL Server"]
   }
 ];
 
