@@ -48,14 +48,6 @@ const projects = [
     tech: ["Power BI", "Oracle ERP", "Azure Data Factory", "SQL Server", "DAX"]
   },
   {
-    title: "Customer 360 Analytics",
-    company: "Retail Enterprise",
-    icon: Users,
-    description: "Built unified customer data platform consolidating CRM, POS, and web analytics data. Enabled personalized marketing campaigns and customer lifetime value predictions through advanced segmentation.",
-    impact: "25% increase in customer retention, 40% improvement in campaign ROI",
-    tech: ["Azure Synapse", "Power BI", "Python", "Azure ML", "Databricks"]
-  },
-  {
     title: "Revenue Forecasting Pipeline",
     company: "Financial Services",
     icon: ShoppingCart,
