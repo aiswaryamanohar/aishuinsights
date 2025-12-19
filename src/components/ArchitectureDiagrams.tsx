@@ -27,8 +27,8 @@ const diagrams = [
 ];
 
 const LakehouseDiagram = () => (
-  <div className="w-full overflow-x-auto">
-    <svg viewBox="0 0 800 400" className="w-full min-w-[600px] h-auto">
+  <div className="w-full overflow-x-auto pb-2">
+    <svg viewBox="0 0 800 400" className="w-full min-w-[500px] sm:min-w-[600px] h-auto" style={{ minHeight: '250px' }}>
       {/* Background */}
       <rect width="800" height="400" fill="transparent" />
       
@@ -145,8 +145,8 @@ const LakehouseDiagram = () => (
 );
 
 const AnalyticsDiagram = () => (
-  <div className="w-full overflow-x-auto">
-    <svg viewBox="0 0 800 350" className="w-full min-w-[600px] h-auto">
+  <div className="w-full overflow-x-auto pb-2">
+    <svg viewBox="0 0 800 350" className="w-full min-w-[500px] sm:min-w-[600px] h-auto" style={{ minHeight: '220px' }}>
       {/* Title */}
       <text x="400" y="25" textAnchor="middle" className="fill-foreground text-sm font-semibold">Enterprise Analytics Pipeline</text>
       
@@ -246,8 +246,8 @@ const AnalyticsDiagram = () => (
 );
 
 const GovernanceDiagram = () => (
-  <div className="w-full overflow-x-auto">
-    <svg viewBox="0 0 800 380" className="w-full min-w-[600px] h-auto">
+  <div className="w-full overflow-x-auto pb-2">
+    <svg viewBox="0 0 800 380" className="w-full min-w-[500px] sm:min-w-[600px] h-auto" style={{ minHeight: '240px' }}>
       {/* Title */}
       <text x="400" y="25" textAnchor="middle" className="fill-foreground text-sm font-semibold">Enterprise Data Governance Framework</text>
       
@@ -367,55 +367,63 @@ const ArchitectureDiagrams = () => {
   const { ref: contentRef, isVisible: contentVisible } = useScrollReveal();
 
   return (
-    <section id="architecture" className="py-24 bg-background">
+    <section id="architecture" className="py-12 sm:py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
           <div 
             ref={headerRef}
-            className={`text-center mb-12 reveal ${headerVisible ? 'visible' : ''}`}
+            className={`text-center mb-8 sm:mb-12 reveal ${headerVisible ? 'visible' : ''}`}
           >
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
               <span className="text-gradient">Technical Architecture</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base px-2">
               Visual representation of key data architectures and frameworks I've designed and implemented
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-transparent mx-auto rounded-full mt-4" />
           </div>
 
-          {/* Diagram selector tabs */}
-          <div className={`flex flex-wrap justify-center gap-3 mb-8 reveal stagger-1 ${headerVisible ? 'visible' : ''}`}>
-            {diagrams.map((diagram) => (
-              <button
-                key={diagram.id}
-                onClick={() => setActiveDiagram(diagram.id)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 hover:scale-105 ${
-                  activeDiagram === diagram.id
-                    ? "bg-primary text-primary-foreground shadow-md"
-                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                }`}
-              >
-                <diagram.icon className="w-4 h-4" />
-                <span className="hidden sm:inline">{diagram.title}</span>
-                <span className="sm:hidden">{diagram.title.split(" ")[0]}</span>
-              </button>
-            ))}
+          {/* Diagram selector tabs - scrollable on mobile */}
+          <div className={`mb-6 sm:mb-8 reveal stagger-1 ${headerVisible ? 'visible' : ''}`}>
+            <div className="flex overflow-x-auto gap-2 sm:gap-3 pb-2 sm:pb-0 sm:flex-wrap sm:justify-center scrollbar-hide">
+              {diagrams.map((diagram) => (
+                <button
+                  key={diagram.id}
+                  onClick={() => setActiveDiagram(diagram.id)}
+                  className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg font-medium text-xs sm:text-sm transition-all duration-200 whitespace-nowrap shrink-0 ${
+                    activeDiagram === diagram.id
+                      ? "bg-primary text-primary-foreground shadow-md"
+                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  }`}
+                >
+                  <diagram.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  <span className="hidden sm:inline">{diagram.title}</span>
+                  <span className="sm:hidden">{diagram.title.split(" ").slice(0, 2).join(" ")}</span>
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Active diagram info */}
-          <div className={`text-center mb-6 reveal stagger-2 ${headerVisible ? 'visible' : ''}`}>
-            <p className="text-sm text-muted-foreground">
+          <div className={`text-center mb-4 sm:mb-6 reveal stagger-2 ${headerVisible ? 'visible' : ''}`}>
+            <p className="text-xs sm:text-sm text-muted-foreground px-2">
               {diagrams.find((d) => d.id === activeDiagram)?.company} • {diagrams.find((d) => d.id === activeDiagram)?.description}
             </p>
           </div>
 
-          {/* Diagram container */}
+          {/* Diagram container - improved mobile scrolling */}
           <div 
             ref={contentRef}
-            className={`bg-gradient-card rounded-2xl p-6 md:p-8 card-shadow border border-border gradient-border reveal-scale ${contentVisible ? 'visible' : ''}`}
+            className={`bg-gradient-card rounded-xl sm:rounded-2xl p-3 sm:p-6 md:p-8 card-shadow border border-border gradient-border reveal-scale ${contentVisible ? 'visible' : ''}`}
           >
-            {renderDiagram()}
+            {/* Mobile hint */}
+            <p className="text-xs text-muted-foreground text-center mb-3 sm:hidden flex items-center justify-center gap-1">
+              <span>👆</span> Swipe to explore diagram
+            </p>
+            <div className="overflow-x-auto -mx-3 px-3 sm:mx-0 sm:px-0">
+              {renderDiagram()}
+            </div>
           </div>
         </div>
       </div>
