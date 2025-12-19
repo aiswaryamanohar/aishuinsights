@@ -85,14 +85,14 @@ const Hero = () => {
               </a>
             </Button>
             <Button variant="heroOutline" size="lg" className="w-full sm:w-auto" asChild>
-              <a href="mailto:aishuinsights@gmail.com">
+              <a href="mailto:aysswarya137@gmail.com">
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="hidden sm:inline">Get in Touch</span>
                 <span className="sm:hidden">Email</span>
               </a>
             </Button>
             <Button variant="heroOutline" size="lg" className="w-full sm:w-auto" asChild>
-              <a href="tel:+971509461995">
+              <a href="tel:+971506906899">
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="hidden sm:inline">Call Me</span>
                 <span className="sm:hidden">Call</span>
