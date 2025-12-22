@@ -26,80 +26,9 @@ const diagrams = [
   },
 ];
 
-// Mobile-friendly card-based diagram component
-const MobileDiagramCard = ({ title, items, color }: { title: string; items: string[]; color: string }) => (
-  <div className={`p-4 rounded-lg border-2 ${color}`}>
-    <h4 className="font-semibold text-sm mb-2">{title}</h4>
-    <ul className="text-xs text-muted-foreground space-y-1">
-      {items.map((item, i) => (
-        <li key={i}>• {item}</li>
-      ))}
-    </ul>
-  </div>
-);
-
 const LakehouseDiagram = () => (
-  <>
-    {/* Mobile Version - Stacked Cards */}
-    <div className="block md:hidden space-y-4">
-      <h3 className="text-center font-semibold text-sm text-foreground mb-4">Azure Databricks Lakehouse Architecture</h3>
-      
-      <div className="grid grid-cols-2 gap-3">
-        <MobileDiagramCard 
-          title="Data Sources" 
-          items={["SAP / ERP", "APIs / REST", "Files / SFTP", "Kafka Streams"]}
-          color="border-border bg-secondary/50"
-        />
-        <MobileDiagramCard 
-          title="Ingestion" 
-          items={["ADF", "Event Hub", "Databricks", "Autoloader"]}
-          color="border-primary bg-primary/10"
-        />
-      </div>
-      
-      <div className="flex justify-center">
-        <span className="text-muted-foreground text-lg">↓</span>
-      </div>
-      
-      <div className="grid grid-cols-3 gap-2">
-        <div className="p-3 rounded-lg border-2 border-amber-500/50 bg-amber-500/10 text-center">
-          <h4 className="font-bold text-xs text-amber-600 dark:text-amber-400">BRONZE</h4>
-          <p className="text-[10px] text-muted-foreground mt-1">Raw Data</p>
-        </div>
-        <div className="p-3 rounded-lg border-2 border-slate-400/50 bg-slate-400/10 text-center">
-          <h4 className="font-bold text-xs text-slate-600 dark:text-slate-400">SILVER</h4>
-          <p className="text-[10px] text-muted-foreground mt-1">Cleansed</p>
-        </div>
-        <div className="p-3 rounded-lg border-2 border-yellow-500/50 bg-yellow-500/10 text-center">
-          <h4 className="font-bold text-xs text-yellow-600 dark:text-yellow-400">GOLD</h4>
-          <p className="text-[10px] text-muted-foreground mt-1">Business-Ready</p>
-        </div>
-      </div>
-      
-      <div className="flex justify-center">
-        <span className="text-muted-foreground text-lg">↓</span>
-      </div>
-      
-      <div className="grid grid-cols-3 gap-2">
-        <div className="p-2 rounded border border-accent bg-accent/20 text-center">
-          <span className="text-[10px] font-medium text-accent">Power BI</span>
-        </div>
-        <div className="p-2 rounded border border-accent bg-accent/20 text-center">
-          <span className="text-[10px] font-medium text-accent">APIs</span>
-        </div>
-        <div className="p-2 rounded border border-accent bg-accent/20 text-center">
-          <span className="text-[10px] font-medium text-accent">ML Models</span>
-        </div>
-      </div>
-      
-      <div className="p-3 rounded-lg bg-primary/5 border border-primary/30 text-center mt-4">
-        <p className="text-xs text-primary font-medium">Data Governance Layer</p>
-        <p className="text-[10px] text-muted-foreground">Unity Catalog • Quality Rules • Lineage • Access Control</p>
-      </div>
-    </div>
-
-    {/* Desktop Version - SVG */}
-    <div className="hidden md:block">
+  <div className="overflow-x-auto pb-2">
+    <div className="min-w-[700px]">
       <svg viewBox="0 0 800 400" className="w-full h-auto" style={{ minHeight: '300px' }}>
         {/* Background */}
         <rect width="800" height="400" fill="transparent" />
@@ -214,78 +143,13 @@ const LakehouseDiagram = () => (
         <text x="400" y="20" textAnchor="middle" className="fill-foreground text-sm font-semibold">Azure Databricks Lakehouse Architecture</text>
       </svg>
     </div>
-  </>
+    <p className="text-xs text-muted-foreground text-center mt-2 md:hidden">← Scroll to view full diagram →</p>
+  </div>
 );
 
 const AnalyticsDiagram = () => (
-  <>
-    {/* Mobile Version */}
-    <div className="block md:hidden space-y-4">
-      <h3 className="text-center font-semibold text-sm text-foreground mb-4">Enterprise Analytics Pipeline</h3>
-      
-      <MobileDiagramCard 
-        title="Data Sources" 
-        items={["Sales Systems", "Distributor Data", "Market Research", "External APIs"]}
-        color="border-border bg-secondary/50"
-      />
-      
-      <div className="flex justify-center">
-        <span className="text-muted-foreground text-lg">↓</span>
-      </div>
-      
-      <MobileDiagramCard 
-        title="ETL Processing" 
-        items={["SSIS", "Knime", "Python", "Trifacta"]}
-        color="border-primary bg-primary/10"
-      />
-      
-      <div className="flex justify-center">
-        <span className="text-muted-foreground text-lg">↓</span>
-      </div>
-      
-      <MobileDiagramCard 
-        title="Data Warehouse" 
-        items={["Fact Tables", "Dimensions", "SSAS Cubes"]}
-        color="border-accent bg-accent/10"
-      />
-      
-      <div className="flex justify-center">
-        <span className="text-muted-foreground text-lg">↓</span>
-      </div>
-      
-      <MobileDiagramCard 
-        title="Semantic Layer" 
-        items={["Measures", "Hierarchies", "Calculations", "Row-Level Security"]}
-        color="border-purple-500/50 bg-purple-500/10"
-      />
-      
-      <div className="flex justify-center">
-        <span className="text-muted-foreground text-lg">↓</span>
-      </div>
-      
-      <div className="grid grid-cols-2 gap-2">
-        <div className="p-3 rounded-lg border-2 border-green-500/50 bg-green-500/10 text-center">
-          <span className="text-xs font-medium text-green-600 dark:text-green-400">Power BI</span>
-        </div>
-        <div className="p-3 rounded-lg border-2 border-green-500/50 bg-green-500/10 text-center">
-          <span className="text-xs font-medium text-green-600 dark:text-green-400">Tableau</span>
-        </div>
-        <div className="p-3 rounded-lg border-2 border-green-500/50 bg-green-500/10 text-center">
-          <span className="text-xs font-medium text-green-600 dark:text-green-400">Excel</span>
-        </div>
-        <div className="p-3 rounded-lg border-2 border-green-500/50 bg-green-500/10 text-center">
-          <span className="text-xs font-medium text-green-600 dark:text-green-400">API Access</span>
-        </div>
-      </div>
-      
-      <div className="p-3 rounded-lg bg-primary/5 border border-primary/30 text-center mt-4">
-        <p className="text-xs text-primary font-medium">Key Deliverables</p>
-        <p className="text-[10px] text-muted-foreground">Size of Prize • Distributor KPIs • Market Analytics</p>
-      </div>
-    </div>
-
-    {/* Desktop Version */}
-    <div className="hidden md:block">
+  <div className="overflow-x-auto pb-2">
+    <div className="min-w-[700px]">
       <svg viewBox="0 0 800 350" className="w-full h-auto" style={{ minHeight: '280px' }}>
         {/* Title */}
         <text x="400" y="25" textAnchor="middle" className="fill-foreground text-sm font-semibold">Enterprise Analytics Pipeline</text>
@@ -383,73 +247,13 @@ const AnalyticsDiagram = () => (
         </g>
       </svg>
     </div>
-  </>
+    <p className="text-xs text-muted-foreground text-center mt-2 md:hidden">← Scroll to view full diagram →</p>
+  </div>
 );
 
 const GovernanceDiagram = () => (
-  <>
-    {/* Mobile Version */}
-    <div className="block md:hidden space-y-4">
-      <h3 className="text-center font-semibold text-sm text-foreground mb-4">Enterprise Data Governance Framework</h3>
-      
-      {/* Central Hub */}
-      <div className="p-4 rounded-full border-2 border-primary bg-primary/10 text-center mx-auto w-32 h-32 flex items-center justify-center">
-        <div>
-          <p className="font-bold text-xs text-primary">DATA</p>
-          <p className="font-bold text-xs text-primary">GOVERNANCE</p>
-          <p className="font-bold text-xs text-primary">HUB</p>
-        </div>
-      </div>
-      
-      <div className="grid grid-cols-2 gap-3">
-        <MobileDiagramCard 
-          title="Data Quality" 
-          items={["Validation Rules", "Profiling", "Monitoring"]}
-          color="border-green-500/50 bg-green-500/10"
-        />
-        <MobileDiagramCard 
-          title="Metadata" 
-          items={["Business Glossary", "Data Dictionary", "Catalog"]}
-          color="border-blue-500/50 bg-blue-500/10"
-        />
-        <MobileDiagramCard 
-          title="Data Lineage" 
-          items={["Source Tracking", "Impact Analysis", "Transformations"]}
-          color="border-purple-500/50 bg-purple-500/10"
-        />
-        <MobileDiagramCard 
-          title="Access Control" 
-          items={["Role-Based Access", "Data Masking", "Audit Trails"]}
-          color="border-orange-500/50 bg-orange-500/10"
-        />
-      </div>
-      
-      <div className="grid grid-cols-2 gap-3">
-        <div className="p-3 rounded-lg border border-accent bg-accent/10 text-center">
-          <span className="text-xs font-semibold text-accent">Ownership</span>
-          <p className="text-[10px] text-muted-foreground">Data Stewards</p>
-        </div>
-        <div className="p-3 rounded-lg border border-accent bg-accent/10 text-center">
-          <span className="text-xs font-semibold text-accent">Standards</span>
-          <p className="text-[10px] text-muted-foreground">Naming Conventions</p>
-        </div>
-        <div className="p-3 rounded-lg border border-accent bg-accent/10 text-center">
-          <span className="text-xs font-semibold text-accent">Compliance</span>
-          <p className="text-[10px] text-muted-foreground">Policy Enforcement</p>
-        </div>
-        <div className="p-3 rounded-lg border border-accent bg-accent/10 text-center">
-          <span className="text-xs font-semibold text-accent">Lifecycle</span>
-          <p className="text-[10px] text-muted-foreground">Retention Policies</p>
-        </div>
-      </div>
-      
-      <div className="p-3 rounded-lg bg-primary/5 border border-primary/30 text-center">
-        <p className="text-[10px] text-primary font-medium">CDMP Framework • DAMA-DMBOK • Enterprise Data Management</p>
-      </div>
-    </div>
-
-    {/* Desktop Version */}
-    <div className="hidden md:block">
+  <div className="overflow-x-auto pb-2">
+    <div className="min-w-[700px]">
       <svg viewBox="0 0 800 380" className="w-full h-auto" style={{ minHeight: '300px' }}>
         {/* Title */}
         <text x="400" y="25" textAnchor="middle" className="fill-foreground text-sm font-semibold">Enterprise Data Governance Framework</text>
@@ -548,7 +352,8 @@ const GovernanceDiagram = () => (
         </g>
       </svg>
     </div>
-  </>
+    <p className="text-xs text-muted-foreground text-center mt-2 md:hidden">← Scroll to view full diagram →</p>
+  </div>
 );
 
 const ArchitectureDiagrams = () => {
